@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 224 76% 48%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-family: 'Inter', system-ui, sans-serif; }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+.dark ::-webkit-scrollbar-track { background: #1e293b; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+/* Highlight styles */
+.highlight-hallucination { background-color: rgb(254 202 202); border-bottom: 2px solid rgb(239 68 68); border-radius: 2px; cursor: help; transition: background-color 0.15s; padding: 1px 0; }
+.highlight-hallucination:hover { background-color: rgb(252 165 165); }
+.highlight-uncertain { background-color: rgb(254 240 138); border-bottom: 2px solid rgb(234 179 8); border-radius: 2px; cursor: help; transition: background-color 0.15s; padding: 1px 0; }
+.highlight-uncertain:hover { background-color: rgb(253 224 71); }
+.highlight-reliable { background-color: rgb(187 247 208); border-bottom: 2px dashed rgb(34 197 94); border-radius: 2px; padding: 1px 0; }
+
+.dark .highlight-hallucination { background-color: rgba(239,68,68,0.25); border-color: rgb(248,113,113); }
+.dark .highlight-hallucination:hover { background-color: rgba(239,68,68,0.35); }
+.dark .highlight-uncertain { background-color: rgba(234,179,8,0.25); border-color: rgb(250,204,21); }
+.dark .highlight-uncertain:hover { background-color: rgba(234,179,8,0.35); }
+.dark .highlight-reliable { background-color: rgba(34,197,94,0.15); border-color: rgb(74,222,128); }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shimmer { 0% { background-position: -800px 0; } 100% { background-position: 800px 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-fade-in-up { animation: fadeInUp 0.4s ease-out both; }
+.stagger-1 { animation-delay: 0.05s; opacity: 0; }
+.stagger-2 { animation-delay: 0.10s; opacity: 0; }
+.stagger-3 { animation-delay: 0.15s; opacity: 0; }
+.stagger-4 { animation-delay: 0.20s; opacity: 0; }
+
+.skeleton { background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%); background-size: 800px 100%; animation: shimmer 1.5s linear infinite; border-radius: 6px; }
+.dark .skeleton { background: linear-gradient(90deg, #1e293b 0%, #334155 50%, #1e293b 100%); background-size: 800px 100%; }
